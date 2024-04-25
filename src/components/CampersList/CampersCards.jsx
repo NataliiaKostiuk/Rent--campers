@@ -53,7 +53,7 @@ export const CampersCards = () => {
     dispatch(openModal(id));
   };
 
-    return (
+    return (<>
         <Wrapper>
               {allCampers && allCampers.map((camper) => {
           if (!camper) {
@@ -96,7 +96,9 @@ export const CampersCards = () => {
          </Card>
                 )
               })}
-         {isOpen && <ModalShowMore/>}
-        </Wrapper>
+         
+      </Wrapper>
+      {isOpen && <ModalShowMore/>}
+      </>
     )
 }

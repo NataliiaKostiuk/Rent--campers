@@ -15,19 +15,17 @@ import { TW } from "../../assets/TW";
 import {Toilet} from "../../assets/Toilet";
 import { Shower } from "../../assets/Shower"; 
 import {Conditioner} from "../../assets/Conditioner";
-
-import { Span } from "../CampersList/CamperCards.styled";
-import { Wrap, WrapSvg, Text,Textspan, WrapDecsr, Title } from './Features.styled';
+import { Wrap, WrapSvg, Text,Textspan, WrapDecsr, Title,Span } from './Features.styled';
 import { BookingForm } from "../BookingForm/BookingForm";
 
 const Features = () => {
-       const singleCamper = useSelector(SingleCampersSelector);
+     const singleCamper = useSelector(SingleCampersSelector);
+     
     return (
          <Wrap>
-     
        <div>
             <div>
-                             <WrapSvg>
+                         <WrapSvg>
                             <Span><People />{ singleCamper.adults} adults</Span>
                             <Span><Automatic/>Automatic</Span>
                             <Span><Refueling/>Petrol</Span>
@@ -59,10 +57,7 @@ const Features = () => {
                </WrapDecsr>             
         </div>
         <BookingForm/>
-    
-         </Wrap>
-
-         
+         </Wrap>     
     )
 
 }

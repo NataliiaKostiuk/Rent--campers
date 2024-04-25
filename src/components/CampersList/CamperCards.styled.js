@@ -25,6 +25,7 @@ font-weight: 600;
 line-height: 30px;
 margin-left: auto;
 color: #101828;
+margin-right: 8px;
 `;
 
 export const Card = styled.div`
@@ -50,7 +51,7 @@ position: relative;
 `;
 
 export const Heartspan = styled.span`
-margin-right: 24px;
+
 display: flex;
 justify-content: center;
 align-items: center;
@@ -111,6 +112,7 @@ border: none;
 display: flex;
 justify-content: center;
 align-content: center;
-margin-top: 14px;
+margin-top: 24px;
+margin-bottom: 14px;
 `;
 

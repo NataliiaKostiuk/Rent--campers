@@ -18,13 +18,12 @@ export const ModalShowMore = () => {
      
     const dispatch = useDispatch();
     const selectId = useSelector(selectSelectedId);
+    console.log(selectId);
     const singleCamper = useSelector(SingleCampersSelector);
 
 	useEffect(() => {
-	 if (!singleCamper) {
             dispatch(getSingleCamperThunk(selectId));
-        }
-    }, [dispatch, singleCamper,selectId])
+    }, [dispatch,selectId])
    
       const handleCloseModal = () => {
     dispatch(closeModal());
@@ -34,7 +33,7 @@ export const ModalShowMore = () => {
             <Container>
                 <ClBtn onClick={handleCloseModal}><CloseBtn/></ClBtn>
                 {singleCamper && (
-                    <>
+                    <div>
                         <Title>{singleCamper.name}</Title>
                         <Reviewdiv>
                             <Review><Star />{singleCamper.rating}</Review>
@@ -54,7 +53,7 @@ export const ModalShowMore = () => {
                          <Outlet />
                                 </Suspense>
                         </WrapBtn> 
-                    </>
+                    </div>
                 )}
             </Container>
 

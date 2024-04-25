@@ -17,6 +17,9 @@ text-align: left;
 color: #475467;
 margin-bottom: 24px;
 `;
+ 
+export const Label = styled.label`
+position: relative;`
 
 export const Input = styled(Field)`
 width: 400px;
@@ -33,14 +36,17 @@ font-size: 16px;
 font-weight: 400;
 line-height: 20px;
 text-align: left;
+text-indent: 10px;
   }
 `;
 export const ComentInput = styled(Field)`
 width: 400px;
-height: 156px;
+height: 136px;
 border-radius: 10px;
 border-color: transparent;
 background-color: #F7F7F7;
+position: relative;
+text-indent: 10px;
  &:focus {
     outline: none;
   }
@@ -49,6 +55,8 @@ font-size: 16px;
 font-weight: 400;
 line-height: 20px;
 text-align: left;
+position: absolute;
+top: 20px;
   }
 `;
 

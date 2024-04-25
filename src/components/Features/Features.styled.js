@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const Wrap = styled.div`
 width: 902px;
-height: 532px;
+height: 580px;
 gap: 24px;
 margin-top: 44px;
 display: flex;
@@ -15,7 +15,7 @@ flex-wrap: wrap;
 gap: 12px;
 width: 430px;
 height:350px;
-margin-bottom: 44px;
+margin-bottom: 24px;
 `;
 
 export const Text = styled.div`
@@ -40,6 +40,7 @@ margin-right: auto;
 `;
 export const WrapDecsr = styled.div`
 width: 430px;
+margin-bottom: 24px;
 `;
 
 export const Title = styled.div`
@@ -48,5 +49,19 @@ font-weight: 600;
 line-height: 24px;
 text-align: left;
 color: #101828;
-margin-bottom: 34px;
+margin-bottom: 24px;
+`;
+export const Span = styled.span`
+background-color: #F2F4F7;
+padding: 12px 18px 12px 18px;
+gap: 8px;
+border-radius: 100px;
+display: flex;
+justify-content: center;
+align-items: center;
+font-family: Inter;
+font-size: 16px;
+font-weight: 500;
+line-height: 20px;
+color: #101828;
 `;

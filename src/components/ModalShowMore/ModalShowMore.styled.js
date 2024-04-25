@@ -17,10 +17,12 @@ export const Backdrop = styled.div`
   z-index: 1;
 `;
 export const Container = styled.div`
- position: fixed;
+ /* position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
+  position: relative;
+  margin-top: 200px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -36,7 +38,7 @@ export const Container = styled.div`
  `;
 
 export const Img = styled.img`
-width: 290px;
+min-width: 290px;
 height: 310px;
 border-radius: 10px;
 `;
@@ -103,6 +105,7 @@ position: relative;
 `;
 
 export const WrapBtn = styled.div`
+margin-top: 44px;
 margin-bottom: auto;
 `;
 

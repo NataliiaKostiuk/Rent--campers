@@ -1,5 +1,5 @@
 import { Formik, Form} from 'formik';
-import { Title, SubTitle, ComentInput, Input } from './BooringForm.styled';
+import { Title, SubTitle, ComentInput, Input, Label} from './BooringForm.styled';
 import { Button } from '../CampersList/CamperCards.styled'; 
 
 export  const BookingForm = () => {
@@ -26,18 +26,18 @@ export  const BookingForm = () => {
           <Form>
               <Title>Book your campervan now</Title>
               <SubTitle>Stay connected! We are always ready to help you.</SubTitle>
-      <label htmlFor="name">
+      <Label htmlFor="name">
           <Input name="name" placeholder="name" />
-      </label>
-      <label htmlFor="email">
+      </Label>
+      <Label htmlFor="email">
           <Input type="email" name="email" placeholder="email" />
-        </label>
-      <label htmlFor="date">
+        </Label>
+      <Label htmlFor="date">
           <Input type="dates" name="dates" placeholder="Booking date" />
-        </label>
-      <label htmlFor="number">
+        </Label>
+      <Label htmlFor="number">
           <ComentInput type="comment" name="comment" placeholder="Comment" />
-      </label>
+      </Label>
     <Button  type="submit">Send</Button>
       </Form>
     </Formik>)
