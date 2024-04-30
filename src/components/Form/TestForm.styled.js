@@ -4,20 +4,19 @@ import styled from 'styled-components';
 
 
 export const Fields = styled(Field)`
-width: 112px;
-height: 95px;
-border-radius: 10px; 
-border: 1px solid #10182833 ;
-
-&:focus {
-    outline: none;
-    border: 1px solid #E44848;
-  }
-
+width: 1px;
+height: 1px;
+position: fixed;
+ opacity: 0;
 `;
 
 export const Label = styled.label`
 position: relative;
+width: 112px;
+height: 95px;
+border-radius: 10px; 
+border: 1px solid ${({ checked, isSubmitted }) => (checked && !isSubmitted ? '#E44848' : '#10182833')}; 
+cursor: pointer; 
 `;
 
 export const Div = styled.div`

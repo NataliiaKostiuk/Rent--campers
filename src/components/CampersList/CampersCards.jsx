@@ -1,5 +1,5 @@
 
-import { AllCampersSelector } from "../../redux/campers/selectors";
+
 import { useSelector, useDispatch } from "react-redux";
 import { openModal } from "../../redux/modal/ModalSlice";
 import { ModalShowMore } from "../ModalShowMore/ModalShowMore";
@@ -32,14 +32,13 @@ function CutText(text, maxLength) {
   }
 }
 
-export const CampersCards = () => {
+export const CampersCards = ({campers}) => {
   const isOpen = useSelector(selectIsModalOpen);
-    const dispatch = useDispatch();
-  const allCampers = useSelector(AllCampersSelector);
+  const dispatch = useDispatch();
   const favorites = useSelector(selectFavourite);
   
  
-    const handleToggleFavorite = (id, item) => {
+  const handleToggleFavorite = (id, item) => {
     const isFavorite = favorites.some(fav => fav.id === id);
     if (isFavorite) {
       dispatch(removeFromFavorites(id));
@@ -55,7 +54,7 @@ export const CampersCards = () => {
 
     return (<>
         <Wrapper>
-              {allCampers && allCampers.map((camper) => {
+              {campers && campers.map((camper) => {
           if (!camper) {
             return null;
                 } 

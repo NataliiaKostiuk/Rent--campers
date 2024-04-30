@@ -6,20 +6,31 @@ import { AllCampersSelector } from  "../../redux/campers/selectors";
 import { getCampersThunk } from "../../redux/campers/CampersThunk";
 import { CampersCards } from "../../components/CampersList/CampersCards";
 import { Container } from "./CampersPage.styled";
+import { useState } from "react";
 
 const CampersPage = () => {
-    const allCampers = useSelector(AllCampersSelector);
+    const [city, setCity] = useState('');
+    const campers = useSelector(AllCampersSelector);
     const dispatch = useDispatch();
 
     	useEffect(() => {
-		!allCampers && dispatch(getCampersThunk())
-	}, [dispatch, allCampers])
-    
+		!campers && dispatch(getCampersThunk())
+	}, [dispatch, campers])
 
+        const handleCityChange = (event) => {
+            setCity(event.target.value);
+    }; 
+    const filteredByLocation = campers && campers.filter(camper =>
+        camper.location.toLowerCase().includes(city.toLowerCase()));
+    
+    const handleSubmit = (values) => {
+        console.log(values);
+
+    }
     return (
         <Container>  
-            <FilterCampers />
-            <CampersCards/>
+            <FilterCampers handleCityChange={handleCityChange} city = {city} handleSubmit={handleSubmit} />
+            <CampersCards campers={filteredByLocation } />
         </Container>
     )
     

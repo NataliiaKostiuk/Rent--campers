@@ -17,12 +17,8 @@ export const Backdrop = styled.div`
   z-index: 1;
 `;
 export const Container = styled.div`
- /* position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
   position: relative;
-  margin-top: 200px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 24px;

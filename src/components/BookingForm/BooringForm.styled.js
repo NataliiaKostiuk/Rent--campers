@@ -28,6 +28,7 @@ border-radius: 10px;
 border-color: transparent;
 background-color: #F7F7F7;
 margin-bottom: 34px;
+text-indent: 10px;
  &:focus {
     outline: none;
   }
@@ -36,7 +37,7 @@ font-size: 16px;
 font-weight: 400;
 line-height: 20px;
 text-align: left;
-text-indent: 10px;
+
   }
 `;
 export const ComentInput = styled(Field)`

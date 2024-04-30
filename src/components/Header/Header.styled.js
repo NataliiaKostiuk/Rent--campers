@@ -25,20 +25,28 @@ export const Logo = styled.div`
  margin-right: auto; 
 `;
 
+const ActiveClassName = 'active';
+
 export const Navlink = styled(NavLink)`
-display: block;
-padding: 20px;
-font-family: Inter;
-font-size: 24px;
-font-weight: 600;
-line-height: 30px;
-text-align: left;
-color: #101828;
-transition: color 750ms cubic-bezier(0.4, 0, 0.2, 1);
- &:hover {
-color: #E44848 ;
+  display: block;
+  padding: 20px;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 30px;
+  text-align: left;
+  color: #101828;
+  transition: color 750ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &.${ActiveClassName} {
+    color: #E44848;
   }
- &:focus {
-color: #E44848 ;
+
+  &:hover {
+    color: #E44848;
   }
-`
+
+  &:focus {
+    color: #E44848;
+  }
+`;

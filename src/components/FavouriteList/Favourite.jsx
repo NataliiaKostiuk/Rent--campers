@@ -20,6 +20,8 @@ import {
   Img, Title, Wrapper, WrapReview, Button, Description,
   Price, Card, WrapTitle, Heartspan, WrapSvg, Span, Review,
 } from "../CampersList/CamperCards.styled";
+import { Message } from "./Favourite.stiled";
+
 
 function CutText(text, maxLength) {
   if (text.length > maxLength) {
@@ -47,52 +49,56 @@ export const FavouriteList = () => {
   const handleOpenModal = (id) => {
     dispatch(openModal(id));
   };
-    return (
+  return (
+    <>
+      {!favorites || favorites.length === 0 ? (
+        <Message>Make your choice!! <br/> You haven't added any camper to this section yet...</Message>
+      ) : (
         <Wrapper>
-            {favorites && favorites.map((favorite) => {
-          if (!favorite) {
-            return null;
-                } 
-       const isFavorite = favorites.some(fav => fav.id === favorite.id);          
-    const cutedDescription = CutText(favorite.description, 65);              
-                return (
-                  
-         <Card key={favorite.id}>
-            <div>
-                <Img src={favorite.gallery[0]} alt="car" />
-            </div>
-            <div>
-                            <WrapTitle>
-                                <Title>{favorite.name}</Title>
-                                <Price>€{favorite.price}</Price>
-                        <Heartspan onClick={() => handleToggleFavorite(favorite.id, favorite) }>
-                           {isFavorite ? <RedStar/> : <Heart/>}
-                            </Heartspan>
-                            </WrapTitle>
-                <WrapReview>           
-                            <Review><Star/></Review>
-                            <Review>{favorite.rating}</Review>
-                            <Review>({favorite.reviews.length}reviews)</Review>
-                             <Review><Location/>{favorite.location}</Review>
-                </WrapReview>      
-                   <Description>{cutedDescription}</Description>
-                 <WrapSvg>
-                            <Span><People />{ favorite.adults} adults</Span>
-                            <Span><Automatic/>Automatic</Span>
-                            <Span><Refueling/>Petrol</Span>
-                            <Span><Kitchen/>Kitchen</Span>
-                            <Span><Bed/>{ favorite.bed}beds</Span>
-                            <Span><Air/>AC</Span>
-                      </WrapSvg> 
-                      <Button onClick={() => (handleOpenModal(favorite.id))} >Show more</Button>
-                     
-              </div>    
-         </Card>
-                )
-              })}
-         {isOpen && <ModalShowMore/>}
+          {favorites && favorites.map((favorite) => {
+            if (!favorite) {
+              return null;
+            } 
+            const isFavorite = favorites.some(fav => fav.id === favorite.id);          
+            const cutedDescription = CutText(favorite.description, 65);              
+            return (
+              <Card key={favorite.id}>
+                <div>
+                  <Img src={favorite.gallery[0]} alt="car" />
+                </div>
+                <div>
+                  <WrapTitle>
+                    <Title>{favorite.name}</Title>
+                    <Price>€{favorite.price}</Price>
+                    <Heartspan onClick={() => handleToggleFavorite(favorite.id, favorite) }>
+                      {isFavorite ? <RedStar/> : <Heart/>}
+                    </Heartspan>
+                  </WrapTitle>
+                  <WrapReview>           
+                    <Review><Star/></Review>
+                    <Review>{favorite.rating}</Review>
+                    <Review>({favorite.reviews.length}reviews)</Review>
+                    <Review><Location/>{favorite.location}</Review>
+                  </WrapReview>      
+                  <Description>{cutedDescription}</Description>
+                  <WrapSvg>
+                    <Span><People />{ favorite.adults} adults</Span>
+                    <Span><Automatic/>Automatic</Span>
+                    <Span><Refueling/>Petrol</Span>
+                    <Span><Kitchen/>Kitchen</Span>
+                    <Span><Bed/>{ favorite.bed}beds</Span>
+                    <Span><Air/>AC</Span>
+                  </WrapSvg> 
+                  <Button onClick={() => (handleOpenModal(favorite.id))} >Show more</Button>
+                </div>    
+              </Card>
+            );
+          })}
+          {isOpen && <ModalShowMore/>}
         </Wrapper>
-    )
+      )}
+    </>
+  );
 }
 
 

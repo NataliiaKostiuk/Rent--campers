@@ -18,7 +18,6 @@ export const ModalShowMore = () => {
      
     const dispatch = useDispatch();
     const selectId = useSelector(selectSelectedId);
-    console.log(selectId);
     const singleCamper = useSelector(SingleCampersSelector);
 
 	useEffect(() => {

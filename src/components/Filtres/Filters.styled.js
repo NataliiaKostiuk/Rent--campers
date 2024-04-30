@@ -16,7 +16,6 @@ height: 56px;
 padding: 18px;
 gap: 10px;
 border-radius: 10px;
-opacity: 0px;
 background-color: #F7F7F7;
  border: none;
  text-indent: 30px;
@@ -38,7 +37,7 @@ position:relative;
 
 export const LocWrap = styled.div`
 position:absolute;
-top:50px;
+top:65px;
 left: 18px;
 `;
 export const Wrap = styled.div`
