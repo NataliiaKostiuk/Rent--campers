@@ -8,14 +8,14 @@ import { Star } from '../../assets/Star';
 import { Location } from '../../assets/Loc';
 import { CloseBtn } from '../../assets/CloseBnt';
 import { closeModal } from "../../redux/modal/ModalSlice";
-import { Outlet} from "react-router-dom";
+import { Outlet,useLocation } from "react-router-dom";
 import { Suspense } from "react";
 
 
 
 
 export const ModalShowMore = () => {
-     
+    const location = useLocation(); 
     const dispatch = useDispatch();
     const selectId = useSelector(selectSelectedId);
     const singleCamper = useSelector(SingleCampersSelector);
@@ -25,7 +25,8 @@ export const ModalShowMore = () => {
     }, [dispatch,selectId])
    
       const handleCloseModal = () => {
-    dispatch(closeModal());
+          dispatch(closeModal());
+          document.body.style.overflow = '';
   };
     return (
         <Backdrop>
@@ -46,8 +47,8 @@ export const ModalShowMore = () => {
                         </Imgdiv>
                         <div>{singleCamper.description}</div>
                         <WrapBtn>
-                            <Botton to={`/campers/${singleCamper.id}/features`} >Features</Botton>
-                            <Botton to={`/campers/${singleCamper.id}/reviews`} >Reviews</Botton>
+                            <Botton to={`/campers/${singleCamper.id}/features`} state={{ from: location }} >Features</Botton>
+                            <Botton to={`/campers/${singleCamper.id}/reviews`} state={{ from: location }} >Reviews</Botton>
                                  <Suspense fallback={<div>Loading...</div>}>
                          <Outlet />
                                 </Suspense>

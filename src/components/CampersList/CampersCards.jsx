@@ -50,6 +50,7 @@ export const CampersCards = ({campers}) => {
 
   const handleOpenModal = (id) => {
     dispatch(openModal(id));
+    document.body.style.overflow = 'hidden';
   };
 
     return (<>

@@ -15,6 +15,7 @@ export const Backdrop = styled.div`
   padding: 0px;
   margin: 0;
   z-index: 1;
+  overflow: hidden; 
 `;
 export const Container = styled.div`
   position: relative;
