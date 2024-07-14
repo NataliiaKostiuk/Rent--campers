@@ -10,7 +10,7 @@ import { useState } from "react";
 
 const CampersPage = () => {
     const [city, setCity] = useState('');
-    const [filterCampers, setfilterCampers]=useState([])
+    const [filterCampers, setfilterCampers] = useState([]);
     const campers = useSelector(AllCampersSelector);
     const dispatch = useDispatch();
 
@@ -20,61 +20,55 @@ const CampersPage = () => {
 
         const handleCityChange = (event) => {
             setCity(event.target.value);
-    }; 
+    };
     const filteredByLocation = campers && campers.filter(camper =>
         camper.location.toLowerCase().includes(city.toLowerCase()));
     console.log(campers);
     
-    const handleSubmit = (values) => {
 
-        const filteredCampers = [];
+    const handleSubmit = (values) => {
         const arrayKeys = Object.keys(values);
-        const arrCheckedKeys = arrayKeys.splice(0, 1);
-        for (let i = 0; i < arrayKeys.length; i++) {
-            campers && campers.map((camper) => {
-                if (camper.conditioner === arrayKeys[i] || camper.conditioner !== 0) {
-                    filteredCampers.push(camper)
-                }
-                if (camper.automatic === arrayKeys[i] || camper.automatic !== 0) {
-                    filteredCampers.push(camper)
-                }
-                if (camper.kitchen === arrayKeys[i] || camper.kitchen !== 0) {
-                    filteredCampers.push(camper)
-                }
-                if (camper.TW === arrayKeys[i] || camper.TW !== 0) {
-                    filteredCampers.push(camper)
-                }
-                if (camper.shower === arrayKeys[i] || camper.shower !== 0) {
-                    filteredCampers.push(camper)
-                }
-                if (camper.form === arrayKeys[i] || camper.TW === 'van') {
-                    filteredCampers.push(camper)
-                }
-                if (camper.form === arrayKeys[i] || camper.form === 'alcove') {
-                    filteredCampers.push(camper)
-                }
-                if (camper.form === arrayKeys[i] || camper.form === 'fullyIntegrated') {
-                    filteredCampers.push(camper)
-                }
-               
-            })
+        console.log(arrayKeys); 
+        
+        if (arrayKeys.includes('conditioner')) {
+            const filteredByConditioner = campers.filter(({ conditioner }) => conditioner !== 0)
+            setfilterCampers(filteredByConditioner);
+        }
+        if (arrayKeys.includes('automat')) {
+            const filteredByAutomat = filterCampers.filter(({ transmission }) => transmission === 'automat')
+            setfilterCampers(filteredByAutomat);
+            }
+        if (arrayKeys.includes('kitchen')) {
+            const filteredByKitchen = filterCampers.filter(({ kitchen }) => kitchen !== 0)
+            setfilterCampers(filteredByKitchen);
+        }
+        if (arrayKeys.includes('shower')) {
+            const filteredByShower = filterCampers.filter(({ shower }) => shower !== 0)
+            setfilterCampers(filteredByShower);
+        }
+        if (arrayKeys.includes('TW')) {
+            const filteredByTW = filterCampers.filter(({ TW}) => TW !== 0)
+            setfilterCampers(filteredByTW);
+        }
+        if (arrayKeys.includes('van')) {
+            const filteredByVan = filterCampers.filter(({ form }) => form === 'panelTruck')
+            setfilterCampers(filteredByVan);
         } 
-        const uniqueFilteredCampers = filteredCampers.filter((camper, index, self) =>
-            index === self.findIndex((c) =>
-                c.conditioner === camper.conditioner
-                && c.automatic === camper.automatic
-                && c.TW === camper.TW
-                && c.kitchen === camper.kitchen
-                && c.shower === camper.shower
-                && c.form === camper.form
-            )
-        );
-        setfilterCampers(uniqueFilteredCampers)
+         if (arrayKeys.includes('fullyIntegreted')) {
+            const filteredByFullyInt = filterCampers.filter(({ form }) => form === 'fullyIntegrated')
+            setfilterCampers(filteredByFullyInt);
+        } 
+         if (arrayKeys.includes('alcove')) {
+            const filteredByalcove = filterCampers.filter(({ form }) =>form === 'alcove')
+            setfilterCampers(filteredByalcove);
+            } 
+         console.log(filterCampers);
     }
 
+ console.log(filterCampers);
 
     return (
-        <Container>  
+        <Container>
             <FilterCampers handleCityChange={handleCityChange} city = {city} handleSubmit={handleSubmit} />
             
             {filterCampers.length > 0 ? (
@@ -87,4 +81,6 @@ const CampersPage = () => {
     
 }
 
+
 export default CampersPage
+
