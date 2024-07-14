@@ -30,46 +30,62 @@ const CampersPage = () => {
         const arrayKeys = Object.keys(values);
         console.log(arrayKeys); 
         
-        if (arrayKeys.includes('conditioner')) {
-            const filteredByConditioner = campers.filter(({ conditioner }) => conditioner !== 0)
-            setfilterCampers(filteredByConditioner);
-        }
-        if (arrayKeys.includes('automat')) {
-            const filteredByAutomat = filterCampers.filter(({ transmission }) => transmission === 'automat')
-            setfilterCampers(filteredByAutomat);
-            }
-        if (arrayKeys.includes('kitchen')) {
-            const filteredByKitchen = filterCampers.filter(({ kitchen }) => kitchen !== 0)
-            setfilterCampers(filteredByKitchen);
-        }
-        if (arrayKeys.includes('shower')) {
-            const filteredByShower = filterCampers.filter(({ shower }) => shower !== 0)
-            setfilterCampers(filteredByShower);
-        }
-        if (arrayKeys.includes('TW')) {
-            const filteredByTW = filterCampers.filter(({ TW}) => TW !== 0)
-            setfilterCampers(filteredByTW);
-        }
-        if (arrayKeys.includes('van')) {
-            const filteredByVan = filterCampers.filter(({ form }) => form === 'panelTruck')
-            setfilterCampers(filteredByVan);
-        } 
-         if (arrayKeys.includes('fullyIntegreted')) {
-            const filteredByFullyInt = filterCampers.filter(({ form }) => form === 'fullyIntegrated')
-            setfilterCampers(filteredByFullyInt);
-        } 
-         if (arrayKeys.includes('alcove')) {
-            const filteredByalcove = filterCampers.filter(({ form }) =>form === 'alcove')
-            setfilterCampers(filteredByalcove);
-            } 
-         console.log(filterCampers);
+        const filteredCampers = campers.filter(camper => {
+            return arrayKeys.every(key => {
+                if (key === 'conditioner') return camper.conditioner !== 0;
+                if (key === 'automat') return camper.transmission === 'automat';
+                if (key === 'kitchen') return camper.kitchen !== 0;
+                if (key === 'shower') return camper.shower !== 0;
+                if (key === 'TW') return camper.TW !== 0;
+                if (key === 'van') return camper.form === 'panelTruck';
+                if (key === 'fullyIntegreted') return camper.form === 'fullyIntegrated';
+                if (key === 'alcove') return camper.form === 'alcove';
+                return true; 
+            });
+        });
+
+        setfilterCampers(filteredCampers);
+    
+    //     if (arrayKeys.includes('conditioner')) {
+    //         const filteredByConditioner = campers.filter(({ conditioner }) => conditioner !== 0)
+    //         setfilterCampers(filteredByConditioner);
+    //     }
+    //     if (arrayKeys.includes('automat')) {
+    //         const filteredByAutomat = filterCampers.filter(({ transmission }) => transmission === 'automat')
+    //         setfilterCampers(filteredByAutomat);
+    //         }
+    //     if (arrayKeys.includes('kitchen')) {
+    //         const filteredByKitchen = filterCampers.filter(({ kitchen }) => kitchen !== 0)
+    //         setfilterCampers(filteredByKitchen);
+    //     }
+    //     if (arrayKeys.includes('shower')) {
+    //         const filteredByShower = filterCampers.filter(({ shower }) => shower !== 0)
+    //         setfilterCampers(filteredByShower);
+    //     }
+    //     if (arrayKeys.includes('TW')) {
+    //         const filteredByTW = filterCampers.filter(({ TW}) => TW !== 0)
+    //         setfilterCampers(filteredByTW);
+    //     }
+    //     if (arrayKeys.includes('van')) {
+    //         const filteredByVan = filterCampers.filter(({ form }) => form === 'panelTruck')
+    //         setfilterCampers(filteredByVan);
+    //     } 
+    //      if (arrayKeys.includes('fullyIntegreted')) {
+    //         const filteredByFullyInt = filterCampers.filter(({ form }) => form === 'fullyIntegrated')
+    //         setfilterCampers(filteredByFullyInt);
+    //     } 
+    //      if (arrayKeys.includes('alcove')) {
+    //         const filteredByalcove = filterCampers.filter(({ form }) =>form === 'alcove')
+    //         setfilterCampers(filteredByalcove);
+    //         } 
+    //      console.log(filterCampers);
     }
 
  console.log(filterCampers);
 
     return (
         <Container>
-            <FilterCampers handleCityChange={handleCityChange} city = {city} handleSubmit={handleSubmit} />
+            <FilterCampers handleCityChange={handleCityChange} city = {city} handleSubmit={handleSubmit}/>
             
             {filterCampers.length > 0 ? (
   <CampersCards campers={filterCampers} />

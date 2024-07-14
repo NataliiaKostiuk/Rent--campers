@@ -18,7 +18,7 @@ export const FilterCampers = ({handleCityChange, city, handleSubmit}) => {
                               <LocWrap>  <Location /></LocWrap>
                 </Label>
             </Div>
-            <ChooseForm handleSubmit={handleSubmit } />
+            <ChooseForm handleSubmit={handleSubmit} />
         </Wrap>
     )
     

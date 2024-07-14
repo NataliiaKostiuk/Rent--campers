@@ -10,6 +10,7 @@ import { CamperTree } from '../../assets/Camper3';
 import { Fields,Label, Button, Div, Span, VehDiv,ContainerFirst, Filerdiv } from './TestForm.styled';
 import { useState } from "react";
 
+
 export const ChooseForm = ({handleSubmit}) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -81,6 +82,7 @@ export const ChooseForm = ({handleSubmit}) => {
           </ContainerFirst>
 
           <Button type="submit">Search</Button>
+          <Button type="submit">Show All</Button>
         </Form>
       )}
     </Formik>
